@@ -13,6 +13,9 @@ const Statistics = ({ good, neutral, bad }) => {
 
   return (
     <div>
+      <p>good {good}</p>
+      <p>neutral {neutral}</p>
+      <p>bad {bad}</p>
       <p>all {total}</p>
       <p>average {average}</p>
       <p>positive {positive}%</p>
@@ -35,12 +38,13 @@ const App = () => {
         <Button onClick={() => setBad(bad + 1)} text='bad' />
       </div>
       <h1>statistics</h1>
-      <div>
-        <p>good {good}</p>
-        <p>neutral {neutral}</p>
-        <p>bad {bad}</p>
+      
+      {/* muestra las estadísticas solo si hay clics en algún botón */}
+      {good || neutral || bad ? (
         <Statistics good={good} neutral={neutral} bad={bad} />
-      </div>
+      ) : (
+        <p>No feedback given</p>
+      )}
 
     </div>
   )
